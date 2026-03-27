@@ -187,11 +187,11 @@ public partial class AddStaffDetailsPage : ContentPage, IQueryAttributable
             await _dreamHomeService.AddOrUpdateStaffAsync(staff);
 
 
-            await DisplayAlert("Success", "Staff member added successfully.", "OK");
+            await DisplayAlert("Success", "Staff member added/updated successfully.", "OK");
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error add new member of staff", ex.Message, "OK");
+            await DisplayAlert("Error add/update member of staff", ex.Message, "OK");
         }
     }
 }

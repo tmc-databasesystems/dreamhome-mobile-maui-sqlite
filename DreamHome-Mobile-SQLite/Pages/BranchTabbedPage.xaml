@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:local="clr-namespace:DreamHome_Mobile_SQLite.Pages"
-            x:Class="DreamHome_Mobile_SQLite.Pages.BranchTabbedPage">
-
-    <!--<local:PropertiesPage Title="Properties" />
-    <local:StaffPage Title="Staff" />-->
-</TabbedPage>

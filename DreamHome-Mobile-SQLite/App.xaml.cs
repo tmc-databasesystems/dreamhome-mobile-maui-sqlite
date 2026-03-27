@@ -4,10 +4,18 @@ namespace DreamHome_Mobile_SQLite
 {
     public partial class App : Application
     {
-        public App(AppShell shell)
+ 
+        private readonly AppShell _appShell;
+
+        public App(AppShell appShell)
         {
             InitializeComponent();
-            MainPage = shell;
+            _appShell = appShell;
+        }
+
+        protected override Window CreateWindow(IActivationState? activationState)
+        {
+            return new Window(_appShell);
         }
 
     }
