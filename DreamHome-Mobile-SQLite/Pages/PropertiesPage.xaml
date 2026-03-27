@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DreamHome_Mobile_SQLite.Models"
+             x:Class="DreamHome_Mobile_SQLite.Pages.PropertiesPage"
+             Title="Properties">
+
+    <ScrollView>
+        <VerticalStackLayout
+           Padding="15,0"
+           Spacing="25">    
+
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                <Image
+                   Source="dh.png"
+                   HeightRequest="75"
+                   Aspect="AspectFit"
+                   SemanticProperties.Description="dreamhome logo" />
+
+                <Label Text="DreamHome"
+                   FontSize="24"
+                   FontAttributes="Italic,Bold"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   TextColor="CornflowerBlue"/>
+            </HorizontalStackLayout>
+
+            <CollectionView x:Name="PropertyCollectionView" ItemsSource="{Binding PropertyList}">
+                <CollectionView.Header>
+                    <Grid ColumnDefinitions="*,*,*,*" Padding="8" BackgroundColor="CornflowerBlue">
+                        <Label Text="PropertyNo" FontAttributes="Bold" Grid.Column="0"/>
+                        <Label Text="Type" FontAttributes="Bold" Grid.Column="1" />
+                        <Label Text="Rooms" FontAttributes="Bold" Grid.Column="2"/>
+                        <Label Text="Rent" FontAttributes="Bold" Grid.Column="3"/>
+                    </Grid>
+                </CollectionView.Header>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="local:PropertyForRent">
+                        <Grid ColumnDefinitions="*,*,*,*" Padding="8">
+                            <Grid.Triggers>
+                                <DataTrigger TargetType="Grid" Binding="{Binding IsEven}" Value="True">
+                                    <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Grid" Binding="{Binding IsEven}" Value="False">
+                                    <Setter Property="BackgroundColor" Value="LightSkyBlue" />
+                                </DataTrigger>
+                            </Grid.Triggers>
+
+                            <Label Text="{Binding PropertyNo}" Grid.Column="0"/>
+                            <Label Text="{Binding Type}" Grid.Column="1"/>
+                            <Label Text="{Binding Rooms}" Grid.Column="2"/>
+                            <Label Text="{Binding Rent}" Grid.Column="3"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

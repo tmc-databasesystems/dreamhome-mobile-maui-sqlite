@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DreamHome_Mobile_SQLite.Models"
+             x:Class="DreamHome_Mobile_SQLite.Pages.StaffPage"
+             Title="Staff">
+
+    <ScrollView>
+        <VerticalStackLayout
+          Padding="15,0"
+          Spacing="25">
+
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                <Image
+                      Source="dh.png"
+                      HeightRequest="75"
+                      Aspect="AspectFit"
+                      SemanticProperties.Description="dreamhome logo" />
+
+                <Label Text="DreamHome"
+                      FontSize="24"
+                      FontAttributes="Italic,Bold"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center"
+                      TextColor="CornflowerBlue"/>
+
+                <Button
+                    Text="Add Staff"
+                    Clicked="OnAddStaffClicked"
+                    HorizontalOptions="Center"
+                    Margin="20,0"
+                    WidthRequest="100"
+                    HeightRequest="25" 
+                    BackgroundColor="CornflowerBlue"/>  
+            </HorizontalStackLayout>
+
+            <CollectionView x:Name="StaffCollectionView" ItemsSource="{Binding StaffList}"
+                            SelectionMode="Single"
+                            SelectionChanged="OnStaffSelectionChanged">
+                <CollectionView.Header>
+                    <Grid ColumnDefinitions="*,*,*,*,*" Padding="8" BackgroundColor="CornflowerBlue">
+                        <Label Text="StaffNo" FontAttributes="Bold" Grid.Column="0"/>
+                        <Label Text="FName" FontAttributes="Bold" Grid.Column="1" />
+                        <Label Text="LName" FontAttributes="Bold" Grid.Column="2"/>
+                        <Label Text="Position" FontAttributes="Bold" Grid.Column="3"/>
+                        <Label Text="Salary" FontAttributes="Bold" Grid.Column="4"/>
+                    </Grid>
+                </CollectionView.Header>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Staff">
+                        <Grid ColumnDefinitions="*,*,*,*,*" Padding="8">
+                            <Grid.Triggers>
+                                <DataTrigger TargetType="Grid" Binding="{Binding IsEven}" Value="True">
+                                    <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Grid" Binding="{Binding IsEven}" Value="False">
+                                    <Setter Property="BackgroundColor" Value="LightSkyBlue" />
+                                </DataTrigger>
+                            </Grid.Triggers>
+
+                            <Label Text="{Binding StaffNo}" Grid.Column="0"/>
+                            <Label Text="{Binding FName}" Grid.Column="1"/>
+                            <Label Text="{Binding LName}" Grid.Column="2"/>
+                            <Label Text="{Binding Position}" Grid.Column="3"/>
+                            <Label Text="{Binding Salary}" Grid.Column="4"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

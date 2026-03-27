@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="DreamHome_Mobile_SQLite.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DreamHome_Mobile_SQLite"
+    xmlns:pages="clr-namespace:DreamHome_Mobile_SQLite.Pages"
+    Title="DreamHome"
+    Shell.TabBarIsVisible="True"
+    Shell.TabBarForegroundColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}"
+    Shell.TabBarBackgroundColor="{AppThemeBinding Light=AliceBlue, Dark=#1E1E1E}"
+    Shell.TabBarTitleColor="{AppThemeBinding Light=#000000, Dark=#FFFFFF}">
+
+
+    <!-- Bind AppShell to the BranchContext in code-behind -->
+    <TabBar Route="BranchTabs">
+
+        <!-- 1) Branch (always enabled) -->
+        <Tab Title="Branch" Route="BranchTab">
+            <ShellContent Route="BranchPage"
+                          ContentTemplate="{DataTemplate pages:BranchesPage}" />
+        </Tab>
+
+        <!-- 2) Properties (disabled until branch is selected) -->
+        <Tab Title="Properties" Route="PropertiesTab"
+             IsEnabled="{Binding HasBranch}">
+            <ShellContent Route="PropertiesPage"
+                          ContentTemplate="{DataTemplate pages:PropertiesPage}" />
+        </Tab>
+
+        <!-- 3) Staff (disabled until branch is selected) -->
+        <Tab Title="Staff" Route="StaffTab"
+             IsEnabled="{Binding HasBranch}">
+            <ShellContent Route="StaffPage"
+                          ContentTemplate="{DataTemplate pages:StaffPage}" />
+        </Tab>
+
+        <!-- 4) Queries -->
+        <Tab Title="Queries" Route="QueriesTab">
+            <ShellContent Route="QueriesPage"
+                          ContentTemplate="{DataTemplate pages:QueriesPage}" />
+        </Tab>
+    </TabBar>
+
+</Shell>

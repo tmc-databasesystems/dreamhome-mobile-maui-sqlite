@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DreamHome_Mobile_SQLite.Models"
+             x:Class="DreamHome_Mobile_SQLite.Pages.QueriesPage">
+
+    <VerticalStackLayout
+     Spacing="20"
+     HorizontalOptions="Center">
+
+        <HorizontalStackLayout Spacing="10" Padding="20" VerticalOptions="Center">
+            <Image
+                Source="dh.png"
+                HeightRequest="75"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dreamhome logo" />
+
+            <Label Text="DreamHome Queries"
+                FontSize="24"
+                FontAttributes="Italic,Bold"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                TextColor="CornflowerBlue"/>
+        </HorizontalStackLayout>
+
+        <VerticalStackLayout
+         Spacing="20"
+         HorizontalOptions="Center"
+         VerticalOptions="Center">
+            <Button
+                Text="High Earners"
+                WidthRequest="220"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                BackgroundColor="CornflowerBlue"
+                Clicked="HighEarnersClicked"/>
+
+            <Button
+                Text="Property Viewings"
+                WidthRequest="220"
+                HeightRequest="50"
+                HorizontalOptions="Center" 
+                BackgroundColor="CornflowerBlue"
+                Clicked="PropertyViewingsClicked"/>
+
+            <Button
+                Text="Client Viewings"
+                WidthRequest="220"
+                HeightRequest="50"
+                HorizontalOptions="Center" 
+                BackgroundColor="CornflowerBlue"
+                Clicked="ClientViewingsClicked"/>
+
+            <Button
+                Text="Branch Staff Counts"
+                WidthRequest="220"
+                HeightRequest="50"
+                HorizontalOptions="Center" 
+                BackgroundColor="CornflowerBlue"
+                Clicked="BranchStaffClicked"/>
+
+            <Button
+                Text="Staff at Given City"
+                WidthRequest="220"
+                HeightRequest="50"
+                HorizontalOptions="Center" 
+                BackgroundColor="CornflowerBlue"
+                Clicked="StaffCityClicked"/>
+
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

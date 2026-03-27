@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DreamHome_Mobile_SQLite.Models"
+             x:Class="DreamHome_Mobile_SQLite.MainPage"
+             Title="Branches">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            
+            <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                <Image
+                Source="dh.png"
+                HeightRequest="75"
+                Aspect="AspectFit"
+                SemanticProperties.Description="dreamhome logo" />
+
+                <Label Text="DreamHome"
+                    FontSize="24"
+                    FontAttributes="Italic"
+                    HorizontalOptions="Center"
+                   VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <CollectionView x:Name="BranchCollectionView" ItemsSource="{Binding BranchList}"
+                            SelectionMode="Single"
+                            SelectionChanged="OnBranchSelected">
+                <CollectionView.Header>
+                    <Grid ColumnDefinitions="*,*,*,*" Padding="8" BackgroundColor="AliceBlue">
+                        <Label Text="BranchNo" FontAttributes="Bold" Grid.Column="0"/>
+                        <Label Text="Street" FontAttributes="Bold" Grid.Column="1" />
+                        <Label Text="City" FontAttributes="Bold" Grid.Column="2"/>
+                        <Label Text="Postcode" FontAttributes="Bold" Grid.Column="3"/>
+                    </Grid>
+                </CollectionView.Header>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Branch">
+                        <Grid ColumnDefinitions="*,*,*,*" Padding="8">
+                            <Grid.Triggers>
+                                <DataTrigger TargetType="Grid" Binding="{Binding IsEven}" Value="True">
+                                    <Setter Property="BackgroundColor" Value="#FFFFFF" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Grid" Binding="{Binding IsEven}" Value="False">
+                                    <Setter Property="BackgroundColor" Value="LightSkyBlue" />
+                                </DataTrigger>
+                            </Grid.Triggers>
+
+                            <Label Text="{Binding BranchNo}" Grid.Column="0"/>
+                            <Label Text="{Binding Street}" Grid.Column="1"/>
+                            <Label Text="{Binding City}" Grid.Column="2"/>
+                            <Label Text="{Binding Postcode}" Grid.Column="3"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
